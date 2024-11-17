@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Battleship Showdown</title>
+    <meta name="description" content="Battleship Game" />
+    <meta name="author" content="Lovable" />
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <div class="game-container">
+      <div class="game-header">
+        <h1>SÄNKA SKEPP</h1>
+        <div id="game-status">Placera dina skepp</div>
+      </div>
+
+      <div class="game-boards">
+        <div class="board-container">
+          <h2>Din Flotta</h2>
+          <div id="player-board" class="board"></div>
+        </div>
+        <div class="board-container">
+          <h2>Fiendens Vatten</h2>
+          <div id="computer-board" class="board"></div>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="rotate-btn" class="control-btn">Rotera Skepp</button>
+        <button id="start-game" class="control-btn" disabled>
+          Starta Strid
+        </button>
+        <button id="reset-game" class="control-btn">Nytt Spel</button>
+      </div>
+
+      <div class="ships-container">
+        <div class="ship-selection">
+          <h3>Ships to Place:</h3>
+          <div id="ships-list"></div>
+        </div>
+      </div>
+    </div>
+    <script src="game.js"></script>
+  </body>
+</html>

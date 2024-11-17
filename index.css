@@ -1,0 +1,228 @@
+@import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Roboto:wght@400;700&display=swap");
+
+:root {
+  --deep-blue: #1a2a3a;
+  --ocean-blue: #2a4d69;
+  --light-gray: #e0e0e0;
+  --alert-red: #ff4444;
+  --hit-marker: #ff6b6b;
+  --miss-marker: #4a90e2;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  background: linear-gradient(
+    135deg,
+    var(--deep-blue) 0%,
+    var(--ocean-blue) 100%
+  );
+  color: var(--light-gray);
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.game-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.game-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.game-header h1 {
+  font-family: "Black Ops One", cursive;
+  font-size: 3rem;
+  margin: 0;
+  color: var(--light-gray);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+#game-status {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+}
+
+.game-boards {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.board-container {
+  text-align: center;
+}
+
+.board-container h2 {
+  margin-bottom: 1rem;
+  font-family: "Black Ops One", cursive;
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 2px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.cell {
+  width: 35px;
+  height: 35px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cell:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ship {
+  background: var(--light-gray);
+}
+
+.hit {
+  background: var(--hit-marker);
+  animation: explosion 0.5s ease;
+}
+
+.miss {
+  background: var(--miss-marker);
+  animation: ripple 1s ease;
+}
+
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.control-btn {
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  color: var(--light-gray);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.control-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.control-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ships-container {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.ship-selection {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+#ships-list {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.ship-item {
+  display: flex;
+  background: var(--light-gray);
+  margin: 5px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.ship-item:hover {
+  transform: scale(1.05);
+}
+
+.ship-cell {
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+@keyframes explosion {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .game-boards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .cell {
+    width: 30px;
+    height: 30px;
+  }
+
+  .game-header h1 {
+    font-size: 2rem;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.hidden {
+  visibility: hidden; /* Döljer elementet men tar fortfarande upp plats */
+}
+
+.enemy-shot {
+  background: rgba(
+    255,
+    0,
+    0,
+    0.5
+  ); /* Röd färg för att indikera att fienden skjuter */
+  transition: background 0.3s ease;
+}
